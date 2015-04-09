@@ -6,7 +6,7 @@ public class MoveCardController {
 	public MoveCardController(){
 		
 	}
-	
+	 
 	public boolean moveFromDeckToWaste(Deck deck, Waste waste){
 		
 	}

@@ -1,8 +1,9 @@
 package miw.klondike;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -42,6 +43,18 @@ public class StartControllerTest {
     public void getFoundationsTableauTest() {
     	ArrayList<FoundationTableau> foundationsTableau = startController.getFoundationsTableau();
     	assertEquals(7, foundationsTableau.size());
+    	for (int numFoundationTableau = 0; numFoundationTableau < foundationsTableau.size(); numFoundationTableau++) {
+			assertEquals(numFoundationTableau + 1, foundationsTableau.get(numFoundationTableau).size());
+			Stack<Card> cards = foundationsTableau.get(numFoundationTableau).getCards();
+			for (int card = 0; card < cards.size(); card++) {
+				if(card != cards.size() - 1){
+					assertFalse(foundationsTableau.get(numFoundationTableau).lookCard(card).covered());
+				}else {
+					assertTrue(foundationsTableau.get(numFoundationTableau).lookCard(card).covered());
+				}
+			}
+		}
+    	
     	for (FoundationTableau foundationTableau : foundationsTableau) {
 			assertEquals(0, foundationTableau.size());
 		}
