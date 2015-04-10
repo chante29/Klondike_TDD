@@ -48,15 +48,11 @@ public class StartControllerTest {
 			Stack<Card> cards = foundationsTableau.get(numFoundationTableau).getCards();
 			for (int card = 0; card < cards.size(); card++) {
 				if(card != cards.size() - 1){
-					assertFalse(foundationsTableau.get(numFoundationTableau).lookCard(card).covered());
-				}else {
 					assertTrue(foundationsTableau.get(numFoundationTableau).lookCard(card).covered());
+				}else {
+					assertFalse(foundationsTableau.get(numFoundationTableau).lookCard(card).covered());
 				}
 			}
-		}
-    	
-    	for (FoundationTableau foundationTableau : foundationsTableau) {
-			assertEquals(0, foundationTableau.size());
 		}
     }
     

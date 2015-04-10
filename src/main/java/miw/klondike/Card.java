@@ -2,12 +2,14 @@ package miw.klondike;
 
 public class Card {
 
-	public Card(){
-		
+	private boolean covered;
+	
+	public Card(boolean covered){
+		this.covered = covered;
 	}
 	
 	public boolean covered(){
-		return true;
+		return covered;
 	}
 	
 }

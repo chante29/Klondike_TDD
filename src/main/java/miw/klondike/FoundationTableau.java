@@ -7,11 +7,11 @@ public class FoundationTableau {
 	private Stack<Card> cards; 
 
 	public FoundationTableau() {
-		
+		this.cards = new Stack<Card>();
 	}
 
 	public int size() {
-		return 0;
+		return cards.size();
 	}
 	
 	public Card getFirstCard(){
@@ -28,6 +28,10 @@ public class FoundationTableau {
 
 	public void setCards(Stack<Card> cards) {
 		this.cards = cards;
+	}
+	
+	public void addCard(Card card){
+		this.cards.push(card);
 	}
 	
 	

@@ -3,11 +3,28 @@ package miw.klondike;
 import java.util.ArrayList;
 
 public class StartController {
-
+	private ArrayList<FoundationTableau> foundationsTableau;
 	public StartController(){
-		
+		startFoundationsTableau();
 	}
 	
+	private void startFoundationsTableau() {
+		foundationsTableau = new ArrayList<FoundationTableau>();
+		for (int i = 0; i < 7; i++) {
+			FoundationTableau foundationTableau = new FoundationTableau();
+			foundationsTableau.add(foundationTableau);
+			for (int j = 0; j <= i; j++) {
+				if(j== i){
+					foundationTableau.addCard(new Card(false));
+				}else{
+					foundationTableau.addCard(new Card(true));
+				}
+			}
+		}
+
+		
+	}
+
 	public int getSizeDeck(){
 		return 24;
 	}
@@ -18,17 +35,13 @@ public class StartController {
 	
 	public ArrayList<Foundation> getFoundations(){
 		ArrayList<Foundation> foundations = new ArrayList<Foundation>();
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < 4; i++) {
 			foundations.add(new Foundation());
 		}
 		return foundations;
 	}
 	
 	public ArrayList<FoundationTableau> getFoundationsTableau() {
-		ArrayList<FoundationTableau> foundationsTableau = new ArrayList<FoundationTableau>();
-		for (int i = 0; i < 7; i++) {
-			foundationsTableau.add(new FoundationTableau());
-		}
 		return foundationsTableau;
 	}
 }
