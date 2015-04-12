@@ -18,9 +18,8 @@ public class MoveCardControllerTest {
 	
 	@Test
 	public void moveFromDeckToWasteTest(){
-		Game game = new Game(24, 0);
-		this.moveCardController = new MoveCardController(game);
-		assertTrue(this.moveCardController.moveFromDeckToWaste(game.getDeck(), game.getWaste()));
+		this.moveCardController = new MoveCardController(new Game(new Deck(24), new Waste(0)));
+		assertTrue(this.moveCardController.moveFromDeckToWaste(this.moveCardController.getGame().getDeck(), this.moveCardController.getGame().getWaste()));
 		assertEquals(21, this.moveCardController.getGame().getDeck().size());
 		assertEquals(3, this.moveCardController.getGame().getWaste().size());
 		for (Card card : this.moveCardController.getGame().getDeck().getCards()) {
@@ -31,9 +30,8 @@ public class MoveCardControllerTest {
 		}
 		
 		
-		game = new Game(0, 24);
-		this.moveCardController = new MoveCardController(game);
-		assertFalse(this.moveCardController.moveFromDeckToWaste(game.getDeck(), game.getWaste()));
+		this.moveCardController = new MoveCardController(new Game(new Deck(0), new Waste(24)));
+		assertFalse(this.moveCardController.moveFromDeckToWaste(this.moveCardController.getGame().getDeck(), this.moveCardController.getGame().getWaste()));
 		assertEquals(0, this.moveCardController.getGame().getDeck().size());
 		assertEquals(24, this.moveCardController.getGame().getWaste().size());
 		for (Card card : this.moveCardController.getGame().getDeck().getCards()) {
@@ -44,9 +42,8 @@ public class MoveCardControllerTest {
 		}
 		
 		
-		game = new Game(1, 23);
-		this.moveCardController = new MoveCardController(game);
-		assertTrue(this.moveCardController.moveFromDeckToWaste(game.getDeck(), game.getWaste()));
+		this.moveCardController = new MoveCardController(new Game(new Deck(1), new Waste(23)));
+		assertTrue(this.moveCardController.moveFromDeckToWaste(this.moveCardController.getGame().getDeck(), this.moveCardController.getGame().getWaste()));
 		assertEquals(0, this.moveCardController.getGame().getDeck().size());
 		assertEquals(24, this.moveCardController.getGame().getWaste().size());
 		for (Card card : this.moveCardController.getGame().getDeck().getCards()) {
@@ -57,9 +54,8 @@ public class MoveCardControllerTest {
 		}
 		
 		
-		game = new Game(2, 22);
-		this.moveCardController = new MoveCardController(game);
-		assertTrue(this.moveCardController.moveFromDeckToWaste(game.getDeck(), game.getWaste()));
+		this.moveCardController = new MoveCardController(new Game(new Deck(2), new Waste(22)));
+		assertTrue(this.moveCardController.moveFromDeckToWaste(this.moveCardController.getGame().getDeck(), this.moveCardController.getGame().getWaste()));
 		assertEquals(0, this.moveCardController.getGame().getDeck().size());
 		assertEquals(24, this.moveCardController.getGame().getWaste().size());
 		for (Card card : this.moveCardController.getGame().getDeck().getCards()) {
@@ -70,9 +66,8 @@ public class MoveCardControllerTest {
 		}
 		
 		
-		game = new Game(12, 12);
-		this.moveCardController = new MoveCardController(game);
-		assertTrue(this.moveCardController.moveFromDeckToWaste(game.getDeck(), game.getWaste()));
+		this.moveCardController = new MoveCardController(new Game(new Deck(12), new Waste(12)));
+		assertTrue(this.moveCardController.moveFromDeckToWaste(this.moveCardController.getGame().getDeck(), this.moveCardController.getGame().getWaste()));
 		assertEquals(9, this.moveCardController.getGame().getDeck().size());
 		assertEquals(15, this.moveCardController.getGame().getWaste().size());
 		for (Card card : this.moveCardController.getGame().getDeck().getCards()) {
@@ -83,9 +78,8 @@ public class MoveCardControllerTest {
 		}
 		
 		
-		game = new Game(3, 21);
-		this.moveCardController = new MoveCardController(game);
-		assertTrue(this.moveCardController.moveFromDeckToWaste(game.getDeck(), game.getWaste()));
+		this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(21)));
+		assertTrue(this.moveCardController.moveFromDeckToWaste(this.moveCardController.getGame().getDeck(), this.moveCardController.getGame().getWaste()));
 		assertEquals(0, this.moveCardController.getGame().getDeck().size());
 		assertEquals(24, this.moveCardController.getGame().getWaste().size());
 		for (Card card : this.moveCardController.getGame().getDeck().getCards()) {

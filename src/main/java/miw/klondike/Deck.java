@@ -9,6 +9,10 @@ public class Deck {
 	public Deck(Stack<Card> cards) {
 		this.cards = cards;
 	}
+	
+	public Deck(int numCards){
+		this.cards = this.setStackCardRandom(numCards, true);
+	}
 
 	public int size() {
 		return this.cards.size();
@@ -26,6 +30,12 @@ public class Deck {
 		return cards.pop();
 	}
 	
-	
+	private Stack<Card> setStackCardRandom(int sizeDeck, boolean covered) {
+		Stack<Card> cards = new Stack<Card>();
+		for (int num = 0; num < sizeDeck; num++) {
+			cards.add(new Card(covered));
+		}
+		return cards;
+	}
 
 }
