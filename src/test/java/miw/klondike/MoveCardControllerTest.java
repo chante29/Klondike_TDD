@@ -18,11 +18,7 @@ public class MoveCardControllerTest {
 	
 	@Test
 	public void moveFromDeckToWasteTest(){
-		Stack<Card> cardsDeck = new Stack<Card>();
-		cardsDeck = createStackRandom(24);
-		Stack<Card> cardsWaste = new Stack<Card>();
-		cardsWaste = createStackRandom(0);
-		Game game = new Game(new Deck(cardsDeck), new Waste(cardsWaste));
+		Game game = new Game(24, 0);
 		this.moveCardController = new MoveCardController(game);
 		assertTrue(this.moveCardController.moveFromDeckToWaste(game.getDeck(), game.getWaste()));
 		assertEquals(21, this.moveCardController.getDeck().size());
@@ -35,11 +31,7 @@ public class MoveCardControllerTest {
 		}
 		
 		
-		Stack<Card> cardsDeck = new Stack<Card>();
-		cardsDeck = createStackRandom(0);
-		Stack<Card> cardsWaste = new Stack<Card>();
-		cardsWaste = createStackRandom(24);
-		Game game = new Game(new Deck(cardsDeck), new Waste(cardsWaste));
+		game = new Game(0, 24);
 		this.moveCardController = new MoveCardController(game);
 		assertFalse(this.moveCardController.moveFromDeckToWaste(game.getDeck(), game.getWaste()));
 		assertEquals(0, this.moveCardController.getDeck().size());
@@ -51,11 +43,7 @@ public class MoveCardControllerTest {
 			assertFalse(card.covered());
 		}
 		
-		Stack<Card> cardsDeck = new Stack<Card>();
-		cardsDeck = createStackRandom(1);
-		Stack<Card> cardsWaste = new Stack<Card>();
-		cardsWaste = createStackRandom(23);
-		Game game = new Game(new Deck(cardsDeck), new Waste(cardsWaste));
+		game = new Game(1, 23);
 		this.moveCardController = new MoveCardController(game);
 		assertTrue(this.moveCardController.moveFromDeckToWaste(game.getDeck(), game.getWaste()));
 		assertEquals(0, this.moveCardController.getDeck().size());
@@ -68,11 +56,7 @@ public class MoveCardControllerTest {
 		}
 		
 		
-		Stack<Card> cardsDeck = new Stack<Card>();
-		cardsDeck = createStackRandom(2);
-		Stack<Card> cardsWaste = new Stack<Card>();
-		cardsWaste = createStackRandom(22);
-		Game game = new Game(new Deck(cardsDeck), new Waste(cardsWaste));
+		game = new Game(2, 22);
 		this.moveCardController = new MoveCardController(game);
 		assertTrue(this.moveCardController.moveFromDeckToWaste(game.getDeck(), game.getWaste()));
 		assertEquals(0, this.moveCardController.getDeck().size());
@@ -84,11 +68,7 @@ public class MoveCardControllerTest {
 			assertFalse(card.covered());
 		}
 		
-		Stack<Card> cardsDeck = new Stack<Card>();
-		cardsDeck = createStackRandom(12);
-		Stack<Card> cardsWaste = new Stack<Card>();
-		cardsWaste = createStackRandom(12);
-		Game game = new Game(new Deck(cardsDeck), new Waste(cardsWaste));
+		game = new Game(12, 12);
 		this.moveCardController = new MoveCardController(game);
 		assertTrue(this.moveCardController.moveFromDeckToWaste(game.getDeck(), game.getWaste()));
 		assertEquals(9, this.moveCardController.getDeck().size());
@@ -100,11 +80,7 @@ public class MoveCardControllerTest {
 			assertFalse(card.covered());
 		}
 		
-		Stack<Card> cardsDeck = new Stack<Card>();
-		cardsDeck = createStackRandom(3);
-		Stack<Card> cardsWaste = new Stack<Card>();
-		cardsWaste = createStackRandom(21);
-		Game game = new Game(new Deck(cardsDeck), new Waste(cardsWaste));
+		game = new Game(3, 21);
 		this.moveCardController = new MoveCardController(game);
 		assertTrue(this.moveCardController.moveFromDeckToWaste(game.getDeck(), game.getWaste()));
 		assertEquals(0, this.moveCardController.getDeck().size());
