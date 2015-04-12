@@ -10,7 +10,24 @@ public class MoveCardController {
 	}
 
 	public boolean moveFromDeckToWaste(Deck deck, Waste waste){
-		return false;
+		switch(deck.getCards().size()){
+		case 0:
+			return false;
+		case 1:
+		case 2:
+			int sizeDeck = deck.getCards().size();
+			for (int numCard = 0; numCard < sizeDeck; numCard++) {
+				Card card = deck.getCard();
+				waste.getCards().add(card.turn());
+			}
+			return true;
+		default:
+			for (int numCard = 0; numCard < 3; numCard++) {
+				Card card = deck.getCard();
+				waste.getCards().add(card.turn());
+			}
+			return true;
+		}
 	}
 	
 	public boolean moveFromWasteToFoundation(Waste waste, Foundation foundation){

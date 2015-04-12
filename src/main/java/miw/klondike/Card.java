@@ -11,5 +11,10 @@ public class Card {
 	public boolean covered(){
 		return covered;
 	}
+
+	public Card turn() {
+		this.covered = !this.covered;
+		return this;
+	}
 	
 }

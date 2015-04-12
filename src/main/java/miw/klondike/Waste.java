@@ -6,6 +6,10 @@ public class Waste {
 
 	private Stack<Card> cards;
 	
+	public Waste(Stack<Card> cards) {
+		this.cards = cards;
+	}
+
 	public int size() {
 		return this.cards.size();
 	}
