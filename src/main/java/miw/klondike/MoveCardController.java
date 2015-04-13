@@ -9,22 +9,22 @@ public class MoveCardController {
 		this.game = game;
 	}
 
-	public boolean moveFromDeckToWaste(Deck deck, Waste waste){
-		switch(deck.getCards().size()){
+	public boolean moveFromDeckToWaste(){
+		switch(this.game.getDeck().getCards().size()){
 		case 0:
 			return false;
 		case 1:
 		case 2:
-			int sizeDeck = deck.getCards().size();
+			int sizeDeck = this.game.getDeck().getCards().size();
 			for (int numCard = 0; numCard < sizeDeck; numCard++) {
-				Card card = deck.getCard();
-				waste.getCards().add(card.turn());
+				Card card = this.game.getDeck().getCard();
+				this.game.getWaste().getCards().add(card.turn());
 			}
 			return true;
 		default:
 			for (int numCard = 0; numCard < 3; numCard++) {
-				Card card = deck.getCard();
-				waste.getCards().add(card.turn());
+				Card card = this.game.getDeck().getCard();
+				this.game.getWaste().getCards().add(card.turn());
 			}
 			return true;
 		}
