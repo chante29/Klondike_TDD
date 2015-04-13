@@ -41,4 +41,8 @@ public class Waste {
 	private boolean isEmpty(){
 		return this.cards.size() == 0;
 	}
+
+	public Card getLastCard() {
+		return this.cards.pop();
+	}
 }

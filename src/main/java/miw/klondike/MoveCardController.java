@@ -35,12 +35,14 @@ public class MoveCardController {
 		Card firstCardFoundation = this.getGame().getFoundation(suitFoundation).lookLastCard();
 		if(firstCardWaste != null && firstCardFoundation != null){
 			if( firstCardWaste.getScore().ordinal() - 1 == firstCardFoundation.getScore().ordinal() && firstCardWaste.getSuit()== firstCardFoundation.getSuit()){
+				this.getGame().getFoundation(suitFoundation).addCard(this.getGame().getWaste().getLastCard());
 				return true;
 			}else{
 				return false;
 			}
 			
 		}else if(firstCardWaste != null && firstCardWaste.getScore() == Score.AS && firstCardWaste.getSuit() == this.getGame().getFoundation(suitFoundation).getSuit()){
+			this.getGame().getFoundation(suitFoundation).addCard(this.getGame().getWaste().getLastCard());
 			return true;
 		}
 		return false;

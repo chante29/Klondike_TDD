@@ -33,4 +33,8 @@ public class Foundation {
 	public Suit getSuit(){
 		return this.suit;
 	}
+	
+	public void addCard(Card card){
+		this.cards.push(card);
+	}
 }
