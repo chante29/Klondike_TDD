@@ -46,7 +46,7 @@ public class MoveCardController {
 		return false;
 	}
 	
-	public boolean moveFromWasteToFoundationTableau(Waste waste, FoundationTableau foundationTableau){
+	public boolean moveFromWasteToFoundationTableau(int numFoundationTableau){
 		return false;
 	}
 

@@ -105,6 +105,7 @@ public class MoveCardControllerTest {
 		this.moveCardController.getGame().setWaste(cardsWaste);
 		this.moveCardController.getGame().setFoundation(Suit.DIAMONDS, new Foundation(0, Suit.DIAMONDS));
 		assertTrue(this.moveCardController.moveFromWasteToFoundation(Suit.DIAMONDS));
+		assertFalse(this.moveCardController.getGame().getFoundation(Suit.DIAMONDS).lookLastCard().covered());
 		
 		//Que no haya cartas en el foundation y waste tenga el as de otro palo del foundation
 		this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(21)));
@@ -137,15 +138,14 @@ public class MoveCardControllerTest {
 		this.moveCardController.getGame().setWaste(cardsWaste);
 		this.moveCardController.getGame().setFoundation(Suit.DIAMONDS, new Foundation(5, Suit.DIAMONDS));
 		assertTrue(this.moveCardController.moveFromWasteToFoundation(Suit.DIAMONDS));
+		assertFalse(this.moveCardController.getGame().getFoundation(Suit.DIAMONDS).lookLastCard().covered());
 		
 		
 	}
 	
 	@Test
 	public void moveFromWasteToFoundationTableauTest(){
-		//Que no haya cartas en waste
 		
-		//Que no haya cartas en FoundationTableau y waste tenga un rey
 		
 		//Que no haya cartas en FoundationTableau y waste no tenga un rey
 		
