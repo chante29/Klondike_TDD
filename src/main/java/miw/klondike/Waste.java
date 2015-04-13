@@ -33,4 +33,12 @@ public class Waste {
 		}
 		return cards;
 	}
+	
+	public Card lookCard(int index){
+		return this.isEmpty() ? null : cards.elementAt(index);
+	}
+	
+	private boolean isEmpty(){
+		return this.cards.size() == 0;
+	}
 }

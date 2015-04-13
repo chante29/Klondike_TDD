@@ -106,7 +106,7 @@ public class MoveCardControllerTest {
 		cardsWaste.add(new Card(Score.AS, Suit.DIAMONDS, true));
 		this.moveCardController.getGame().setWaste(cardsWaste);
 		this.moveCardController.getGame().setFoundation(Suit.DIAMONDS, new Foundation(0, Suit.DIAMONDS));
-		assertFalse(this.moveCardController.moveFromWasteToFoundation(Suit.DIAMONDS));
+		assertTrue(this.moveCardController.moveFromWasteToFoundation(Suit.DIAMONDS));
 		
 		//Que no haya cartas en el foundation y waste tenga el as de otro palo del foundation
 		this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(21)));
@@ -130,7 +130,7 @@ public class MoveCardControllerTest {
 		cardsWaste.add(new Card(Score.ROI, Suit.DIAMONDS, true));
 		this.moveCardController.getGame().setWaste(cardsWaste);
 		this.moveCardController.getGame().setFoundation(Suit.DIAMONDS, new Foundation(7, Suit.DIAMONDS));
-		assertTrue(this.moveCardController.moveFromWasteToFoundation(Suit.DIAMONDS));
+		assertFalse(this.moveCardController.moveFromWasteToFoundation(Suit.DIAMONDS));
 		
 		//Que se cumpla todo para que haya movimiento
 		this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(21)));
@@ -145,7 +145,23 @@ public class MoveCardControllerTest {
 	
 	@Test
 	public void moveFromWasteToFoundationTableauTest(){
+		//Que no haya cartas en waste
 		
+		//Que no haya cartas en FoundationTableau y waste tenga un rey
+		
+		//Que no haya cartas en FoundationTableau y waste no tenga un rey
+		
+		//Que la carta de waste no sea una inferior y del mismo color de la de FoundationTableau
+		
+		//Que la carta de waste sea una inferior y del mismo color de la de FoundationTableau
+		
+		//Que la carta de waste sea una inferior y de distinto color de la de FoundationTableau
+		
+		//Que la carta de waste no sea una inferior y de distinto color de la de FoundationTableau
+		
+		//Que la carta de FoundationTableau sea un as
+		
+		//Que no haya cartas ni en waste ni en FoundationTableau
 	}
 	
 	

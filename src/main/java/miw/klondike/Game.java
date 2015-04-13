@@ -8,15 +8,37 @@ public class Game {
 	private Deck deck;
 	private Waste waste;
 	private ArrayList<Foundation> foundations;
+	private ArrayList<FoundationTableau> foundationsTableau;
 	
 	
 	public Game(Deck deck, Waste waste) {
 		this.deck = deck;
 		this.waste = waste;
-		this.foundations = new ArrayList<Foundation>();
+		this.initializeFoundations();
+		this.initializeFoundationsTableau();
 	}
 	
 	
+
+	private void initializeFoundationsTableau() {
+		this.foundationsTableau = new ArrayList<FoundationTableau>();
+		for (int numFoundationTableau = 0; numFoundationTableau < 7; numFoundationTableau++) {
+			this.foundationsTableau.add(new FoundationTableau());
+		}
+		
+	}
+
+
+
+	private void initializeFoundations() {
+		this.foundations = new ArrayList<Foundation>();
+		for (int numFoundation = 0; numFoundation < 4; numFoundation++) {
+			this.foundations.add(new Foundation(numFoundation, Suit.valueOf(numFoundation)));
+		}
+		
+	}
+
+
 
 	public Deck getDeck() {
 		return deck;
@@ -58,6 +80,22 @@ public class Game {
 		}
 		
 	}
+
+
+
+	public void setFoundationTableau(int numFoundationTableau,
+			FoundationTableau foundationsTableau) {
+		this.foundationsTableau.set(numFoundationTableau, foundationsTableau);
+	}
+
+
+
+	public Foundation getFoundation(Suit suitFoundation) {
+		return this.foundations.get(suitFoundation.ordinal());
+		
+	}
+	
+	
 
 
 

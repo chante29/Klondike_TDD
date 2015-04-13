@@ -37,5 +37,9 @@ public class Deck {
 		}
 		return cards;
 	}
+	
+	public Card lookCard(int index){
+		return cards.elementAt(index);
+	}
 
 }

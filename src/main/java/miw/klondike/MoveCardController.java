@@ -31,6 +31,18 @@ public class MoveCardController {
 	}
 	
 	public boolean moveFromWasteToFoundation(Suit suitFoundation){
+		Card firstCardWaste = this.getGame().getWaste().lookCard(this.getGame().getWaste().getCards().size() -1);
+		Card firstCardFoundation = this.getGame().getFoundation(suitFoundation).lookLastCard();
+		if(firstCardWaste != null && firstCardFoundation != null){
+			if( firstCardWaste.getScore().ordinal() - 1 == firstCardFoundation.getScore().ordinal() && firstCardWaste.getSuit()== firstCardFoundation.getSuit()){
+				return true;
+			}else{
+				return false;
+			}
+			
+		}else if(firstCardWaste != null && firstCardWaste.getScore() == Score.AS && firstCardWaste.getSuit() == this.getGame().getFoundation(suitFoundation).getSuit()){
+			return true;
+		}
 		return false;
 	}
 	
