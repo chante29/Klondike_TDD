@@ -30,7 +30,7 @@ public class MoveCardController {
 		}
 	}
 	
-	public boolean moveFromWasteToFoundation(Waste waste, Foundation foundation){
+	public boolean moveFromWasteToFoundation(Suit suitFoundation){
 		return false;
 	}
 	

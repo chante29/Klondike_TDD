@@ -15,9 +15,9 @@ public class StartController {
 			foundationsTableau.add(foundationTableau);
 			for (int j = 0; j <= i; j++) {
 				if(j== i){
-					foundationTableau.addCard(new Card(false));
+					foundationTableau.addCard(new Card(Score.AS, Suit.HEARTS, false));
 				}else{
-					foundationTableau.addCard(new Card(true));
+					foundationTableau.addCard(new Card(Score.AS, Suit.HEARTS, true));
 				}
 			}
 		}
@@ -36,7 +36,7 @@ public class StartController {
 	public ArrayList<Foundation> getFoundations(){
 		ArrayList<Foundation> foundations = new ArrayList<Foundation>();
 		for (int i = 0; i < 4; i++) {
-			foundations.add(new Foundation());
+			foundations.add(new Foundation(0, Suit.HEARTS));
 		}
 		return foundations;
 	}

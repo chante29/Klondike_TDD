@@ -1,8 +1,19 @@
 package miw.klondike;
 
-public class Foundation {
+import static org.junit.Assert.assertFalse;
 
-	public Foundation(){
+import java.util.Stack;
+
+public class Foundation {
+	private Stack<Card> cards;
+	
+
+	public Foundation(int numCards, Suit suit){
+		assertFalse(numCards > 12);
+		this.cards = new Stack<Card>();
+		for (int numCard = 0; numCard < numCards; numCard++) {
+			this.cards.add(new Card(Score.valueOf(numCard), suit, false));
+		}
 		
 	}
 	
