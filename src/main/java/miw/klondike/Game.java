@@ -99,7 +99,7 @@ public class Game {
 
 
 	public FoundationTableau getFoundationTableau(int numFoundationTableau) {
-		assertTrue(numFoundationTableau < 6);
+		assertTrue(numFoundationTableau < 7);
 		return this.foundationsTableau.get(numFoundationTableau);
 	}
 	

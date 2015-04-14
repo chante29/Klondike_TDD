@@ -211,7 +211,7 @@ public class MoveCardControllerTest {
 			assertFalse(this.moveCardController.moveFromWasteToFoundationTableau(numFoundationTableau));
 			assertFalse(card.covered());
 			assertFalse(cardFoundationTableau.covered());
-			assertTrue(this.moveCardController.getGame().getWaste().lookCard(numFoundationTableau).equals(card));
+			assertTrue(this.moveCardController.getGame().getWaste().lookCard(0).equals(card));
 			assertTrue(this.moveCardController.getGame().getFoundationTableau(numFoundationTableau).lookLastCard().equals(cardFoundationTableau));
 			
 			//Que la carta de waste sea una inferior y de distinto color de la de FoundationTableau
@@ -224,8 +224,8 @@ public class MoveCardControllerTest {
 			foundationTableau.addCard(cardFoundationTableau);
 			this.moveCardController.getGame().setFoundationTableau(numFoundationTableau, foundationTableau);
 			assertTrue(this.moveCardController.moveFromWasteToFoundationTableau(numFoundationTableau));
-			assertFalse(this.moveCardController.getGame().getWaste().lookCard(numFoundationTableau) != null 
-					&& this.moveCardController.getGame().getWaste().lookCard(numFoundationTableau).equals(card));
+			assertFalse(this.moveCardController.getGame().getWaste().lookCard(0) != null 
+					&& this.moveCardController.getGame().getWaste().lookCard(0).equals(card));
 			assertFalse(this.moveCardController.getGame().getFoundationTableau(numFoundationTableau).lookLastCard().covered());
 			assertTrue(this.moveCardController.getGame().getFoundationTableau(numFoundationTableau).lookLastCard().equals(card));
 			
@@ -241,7 +241,7 @@ public class MoveCardControllerTest {
 			assertFalse(this.moveCardController.moveFromWasteToFoundationTableau(numFoundationTableau));
 			assertFalse(card.covered());
 			assertFalse(cardFoundationTableau.covered());
-			assertTrue(this.moveCardController.getGame().getWaste().lookCard(numFoundationTableau).equals(card));
+			assertTrue(this.moveCardController.getGame().getWaste().lookCard(0).equals(card));
 			assertTrue(this.moveCardController.getGame().getFoundationTableau(numFoundationTableau).lookLastCard().equals(cardFoundationTableau));
 			
 			//Que la carta de FoundationTableau sea un as
@@ -256,7 +256,7 @@ public class MoveCardControllerTest {
 			assertFalse(this.moveCardController.moveFromWasteToFoundationTableau(numFoundationTableau));
 			assertFalse(card.covered());
 			assertFalse(cardFoundationTableau.covered());
-			assertTrue(this.moveCardController.getGame().getWaste().lookCard(numFoundationTableau).equals(card));
+			assertTrue(this.moveCardController.getGame().getWaste().lookCard(0).equals(card));
 			assertTrue(this.moveCardController.getGame().getFoundationTableau(numFoundationTableau).lookLastCard().equals(cardFoundationTableau));
 		}
 	}
