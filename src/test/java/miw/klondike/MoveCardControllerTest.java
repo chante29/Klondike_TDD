@@ -167,7 +167,7 @@ public class MoveCardControllerTest {
 		this.moveCardController.getGame().setFoundationTableau(0, new FoundationTableau());
 		assertTrue(this.moveCardController.moveFromWasteToFoundationTableau(0));
 		assertFalse(this.moveCardController.getGame().getFoundationTableau(0).lookLastCard().covered());
-		assertTrue(!this.moveCardController.getGame().getFoundationTableau(0).lookLastCard().equals(card));
+		assertTrue(this.moveCardController.getGame().getFoundationTableau(0).lookLastCard().equals(card));
 		
 		//Que no haya cartas en FoundationTableau y waste no tenga un rey
 		cardsWaste = new Stack<Card>();
@@ -176,7 +176,7 @@ public class MoveCardControllerTest {
 		this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
 		this.moveCardController.getGame().setFoundationTableau(0, new FoundationTableau());
 		assertFalse(this.moveCardController.moveFromWasteToFoundationTableau(0));
-		assertFalse(this.moveCardController.getGame().getFoundationTableau(0).lookLastCard().covered());
+		assertFalse(this.moveCardController.getGame().getFoundationTableau(0).lookLastCard() != null && this.moveCardController.getGame().getFoundationTableau(0).lookLastCard().covered());
 		assertTrue(this.moveCardController.getGame().getFoundationTableau(0).lookLastCard() == null);
 		
 		//Que la carta de waste no sea una inferior, pero sí del mismo color de la de FoundationTableau
