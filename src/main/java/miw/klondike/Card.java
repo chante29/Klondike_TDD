@@ -44,6 +44,24 @@ public class Card {
 	public void setSuit(Suit suit) {
 		this.suit = suit;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Card other = (Card) obj;
+		if (covered != other.covered)
+			return false;
+		if (score != other.score)
+			return false;
+		if (suit != other.suit)
+			return false;
+		return true;
+	}
 	
 	
 	

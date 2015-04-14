@@ -2,6 +2,7 @@ package miw.klondike;
 
 import java.util.ArrayList;
 import java.util.Stack;
+import static org.junit.Assert.*;
 
 public class Game {
 
@@ -93,6 +94,13 @@ public class Game {
 	public Foundation getFoundation(Suit suitFoundation) {
 		return this.foundations.get(suitFoundation.ordinal());
 		
+	}
+
+
+
+	public FoundationTableau getFoundationTableau(int numFoundationTableau) {
+		assertTrue(numFoundationTableau < 6);
+		return this.foundationsTableau.get(numFoundationTableau);
 	}
 	
 	

@@ -33,6 +33,10 @@ public class FoundationTableau {
 	public void addCard(Card card){
 		this.cards.push(card);
 	}
+
+	public Card lookLastCard() {
+		return this.cards.peek();
+	}
 	
 	
 }
