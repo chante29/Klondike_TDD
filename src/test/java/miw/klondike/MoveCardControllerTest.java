@@ -93,61 +93,64 @@ public class MoveCardControllerTest {
 	
 	@Test
 	public void moveFromWasteToFoundationTest(){
-		// Que no haya cartas en waste
-		this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(0)));
-		this.moveCardController.getGame().setFoundation(Suit.DIAMONDS, new Foundation(4, Suit.DIAMONDS));
-		assertFalse(this.moveCardController.moveFromWasteToFoundation(Suit.DIAMONDS));
-		
-		//Que no haya cartas en el foundation y waste tenga el as del palo del foundation
-		Stack<Card> cardsWaste = new Stack<Card>();
-		Card card = new Card(Score.AS, Suit.DIAMONDS, false);
-		cardsWaste.add(card);
-		this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
-		this.moveCardController.getGame().setFoundation(Suit.DIAMONDS, new Foundation(0, Suit.DIAMONDS));
-		assertTrue(this.moveCardController.moveFromWasteToFoundation(Suit.DIAMONDS));
-		assertFalse(this.moveCardController.getGame().getFoundation(Suit.DIAMONDS).lookLastCard().covered());
-		assertTrue(this.moveCardController.getGame().getFoundation(Suit.DIAMONDS).lookLastCard().equals(card));
-		
-		//Que no haya cartas en el foundation y waste tenga el as de otro palo del foundation
-		cardsWaste = new Stack<Card>();
-		card = new Card(Score.AS, Suit.HEARTS, false);
-		cardsWaste.add(card);
-		this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
-		this.moveCardController.getGame().setFoundation(Suit.DIAMONDS, new Foundation(0, Suit.DIAMONDS));
-		assertFalse(this.moveCardController.moveFromWasteToFoundation(Suit.DIAMONDS));
-		assertTrue(this.moveCardController.getGame().getFoundation(Suit.DIAMONDS).lookLastCard() == null);
-		
-		
-		//Que no haya cartas en el foundation y waste tenga una carta del palo del foundation que no sea el as
-		cardsWaste = new Stack<Card>();
-		card = new Card(Score.ROI, Suit.DIAMONDS, false);
-		cardsWaste.add(card);
-		this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
-		this.moveCardController.getGame().setFoundation(Suit.DIAMONDS, new Foundation(0, Suit.DIAMONDS));
-		assertFalse(this.moveCardController.moveFromWasteToFoundation(Suit.DIAMONDS));
-		assertTrue(this.moveCardController.getGame().getFoundation(Suit.DIAMONDS).lookLastCard() == null);
-		
-		
-		//Que la carta del Waste no sea la consecutiva del palo del foundation
-		cardsWaste = new Stack<Card>();
-		card = new Card(Score.ROI, Suit.DIAMONDS, false);
-		cardsWaste.add(card);
-		this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
-		this.moveCardController.getGame().setFoundation(Suit.DIAMONDS, new Foundation(7, Suit.DIAMONDS));
-		assertFalse(this.moveCardController.moveFromWasteToFoundation(Suit.DIAMONDS));
-		assertTrue(this.moveCardController.getGame().getFoundation(Suit.DIAMONDS).lookLastCard().equals(new Card(Score.SEVEN, Suit.DIAMONDS, false) ));
-		
-		
-		//Que se cumpla todo para que haya movimiento
-		cardsWaste = new Stack<Card>();
-		card = new Card(Score.SIX, Suit.DIAMONDS, false);
-		cardsWaste.add(card);
-		this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
-		this.moveCardController.getGame().setFoundation(Suit.DIAMONDS, new Foundation(5, Suit.DIAMONDS));
-		assertTrue(this.moveCardController.moveFromWasteToFoundation(Suit.DIAMONDS));
-		assertFalse(this.moveCardController.getGame().getFoundation(Suit.DIAMONDS).lookLastCard().covered());
-		assertTrue(this.moveCardController.getGame().getFoundation(Suit.DIAMONDS).lookLastCard().equals(card));
-		
+		for (int numFoundation = 0; numFoundation < 4; numFoundation++) {
+	
+			// Que no haya cartas en waste
+			this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(0)));
+			this.moveCardController.getGame().setFoundation(Suit.valueOf(numFoundation), new Foundation(4, Suit.valueOf(numFoundation)));
+			assertFalse(this.moveCardController.moveFromWasteToFoundation(Suit.valueOf(numFoundation)));
+			
+			//Que no haya cartas en el foundation y waste tenga el as del palo del foundation
+			Stack<Card> cardsWaste = new Stack<Card>();
+			Card card = new Card(Score.AS, Suit.valueOf(numFoundation), false);
+			cardsWaste.add(card);
+			this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
+			this.moveCardController.getGame().setFoundation(Suit.valueOf(numFoundation), new Foundation(0, Suit.valueOf(numFoundation)));
+			assertTrue(this.moveCardController.moveFromWasteToFoundation(Suit.valueOf(numFoundation)));
+			assertFalse(this.moveCardController.getGame().getFoundation(Suit.valueOf(numFoundation)).lookLastCard().covered());
+			assertTrue(this.moveCardController.getGame().getFoundation(Suit.valueOf(numFoundation)).lookLastCard().equals(card));
+			
+			//Que no haya cartas en el foundation y waste tenga el as de otro palo del foundation
+			cardsWaste = new Stack<Card>();
+			int numDiferentSuit = numFoundation == 3 ? 2 : numFoundation + 1;
+			card = new Card(Score.AS, Suit.valueOf(numDiferentSuit), false);
+			cardsWaste.add(card);
+			this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
+			this.moveCardController.getGame().setFoundation(Suit.valueOf(numFoundation), new Foundation(0, Suit.valueOf(numFoundation)));
+			assertFalse(this.moveCardController.moveFromWasteToFoundation(Suit.valueOf(numFoundation)));
+			assertTrue(this.moveCardController.getGame().getFoundation(Suit.valueOf(numFoundation)).lookLastCard() == null);
+			
+			
+			//Que no haya cartas en el foundation y waste tenga una carta del palo del foundation que no sea el as
+			cardsWaste = new Stack<Card>();
+			card = new Card(Score.ROI, Suit.valueOf(numFoundation), false);
+			cardsWaste.add(card);
+			this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
+			this.moveCardController.getGame().setFoundation(Suit.valueOf(numFoundation), new Foundation(0, Suit.valueOf(numFoundation)));
+			assertFalse(this.moveCardController.moveFromWasteToFoundation(Suit.valueOf(numFoundation)));
+			assertTrue(this.moveCardController.getGame().getFoundation(Suit.valueOf(numFoundation)).lookLastCard() == null);
+			
+			
+			//Que la carta del Waste no sea la consecutiva del palo del foundation
+			cardsWaste = new Stack<Card>();
+			card = new Card(Score.ROI, Suit.valueOf(numFoundation), false);
+			cardsWaste.add(card);
+			this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
+			this.moveCardController.getGame().setFoundation(Suit.valueOf(numFoundation), new Foundation(7, Suit.valueOf(numFoundation)));
+			assertFalse(this.moveCardController.moveFromWasteToFoundation(Suit.valueOf(numFoundation)));
+			assertTrue(this.moveCardController.getGame().getFoundation(Suit.valueOf(numFoundation)).lookLastCard().equals(new Card(Score.SEVEN, Suit.valueOf(numFoundation), false) ));
+			
+			
+			//Que se cumpla todo para que haya movimiento
+			cardsWaste = new Stack<Card>();
+			card = new Card(Score.SIX, Suit.valueOf(numFoundation), false);
+			cardsWaste.add(card);
+			this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
+			this.moveCardController.getGame().setFoundation(Suit.valueOf(numFoundation), new Foundation(5, Suit.valueOf(numFoundation)));
+			assertTrue(this.moveCardController.moveFromWasteToFoundation(Suit.valueOf(numFoundation)));
+			assertFalse(this.moveCardController.getGame().getFoundation(Suit.valueOf(numFoundation)).lookLastCard().covered());
+			assertTrue(this.moveCardController.getGame().getFoundation(Suit.valueOf(numFoundation)).lookLastCard().equals(card));
+		}
 		
 	}
 	
