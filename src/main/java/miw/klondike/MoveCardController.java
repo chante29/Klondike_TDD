@@ -49,6 +49,41 @@ public class MoveCardController {
 	}
 	
 	public boolean moveFromWasteToFoundationTableau(int numFoundationTableau){
+		if(this.getGame().getWaste().lookCard(0) != null){
+			if(this.getGame().getFoundationTableau(numFoundationTableau).lookLastCard()!= null){
+				Card lastCardWaste = this.getGame().getWaste().lookCard(0);
+				Card lastCardFoundationTableau = this.getGame().getFoundationTableau(numFoundationTableau).lookLastCard();
+				
+				if(lastCardFoundationTableau.getScore().ordinal() - 1 == lastCardWaste.getScore().ordinal()){
+					switch(lastCardFoundationTableau.getSuit()){
+					case HEARTS:
+					case DIAMONDS:
+						if(lastCardWaste.getSuit() == Suit.CLUBS || lastCardWaste.getSuit() == Suit.CLUBS){
+							this.getGame().getFoundationTableau(numFoundationTableau).addCard(this.getGame().getWaste().getLastCard());
+							return true;
+						}else{
+							return false;
+						}
+					case CLUBS:
+					case SPADES:
+						if(lastCardWaste.getSuit() == Suit.HEARTS || lastCardWaste.getSuit() == Suit.DIAMONDS){
+							this.getGame().getFoundationTableau(numFoundationTableau).addCard(this.getGame().getWaste().getLastCard());
+							return true;
+						}else{
+							return false;
+						}
+					}
+				}else{
+					return false;
+				}
+			}else {
+				if(this.getGame().getWaste().lookCard(0).getScore() == Score.ROI){
+					this.getGame().getFoundationTableau(numFoundationTableau).addCard(this.getGame().getWaste().getLastCard());
+					return true;
+				}
+				return false;
+			}
+		}
 		return false;
 	}
 

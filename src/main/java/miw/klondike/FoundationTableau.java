@@ -35,7 +35,11 @@ public class FoundationTableau {
 	}
 
 	public Card lookLastCard() {
-		return this.cards.peek();
+		return this.isEmpty() ? null : cards.peek();
+	}
+	
+	private boolean isEmpty(){
+		return this.cards.size() == 0;
 	}
 	
 	
