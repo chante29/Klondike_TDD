@@ -31,7 +31,7 @@ public class MoveCardController {
 	}
 	
 	public boolean moveFromWasteToFoundation(Suit suitFoundation){
-		Card firstCardWaste = this.getGame().getWaste().lookCard(this.getGame().getWaste().getCards().size() -1);
+		Card firstCardWaste = this.getGame().getWaste().lookLastCard();
 		Card firstCardFoundation = this.getGame().getFoundation(suitFoundation).lookLastCard();
 		if(firstCardWaste != null && firstCardFoundation != null){
 			if( firstCardWaste.getScore().ordinal() - 1 == firstCardFoundation.getScore().ordinal() && firstCardWaste.getSuit()== firstCardFoundation.getSuit()){
@@ -49,9 +49,9 @@ public class MoveCardController {
 	}
 	
 	public boolean moveFromWasteToFoundationTableau(int numFoundationTableau){
-		if(this.getGame().getWaste().lookCard(0) != null){
+		if(this.getGame().getWaste().lookLastCard() != null){
 			if(this.getGame().getFoundationTableau(numFoundationTableau).lookLastCard()!= null){
-				Card lastCardWaste = this.getGame().getWaste().lookCard(0);
+				Card lastCardWaste = this.getGame().getWaste().lookLastCard();
 				Card lastCardFoundationTableau = this.getGame().getFoundationTableau(numFoundationTableau).lookLastCard();
 				
 				if(lastCardFoundationTableau.getScore().ordinal() - 1 == lastCardWaste.getScore().ordinal()){
@@ -77,7 +77,7 @@ public class MoveCardController {
 					return false;
 				}
 			}else {
-				if(this.getGame().getWaste().lookCard(0).getScore() == Score.ROI){
+				if(this.getGame().getWaste().lookLastCard().getScore() == Score.ROI){
 					this.getGame().getFoundationTableau(numFoundationTableau).addCard(this.getGame().getWaste().getLastCard());
 					return true;
 				}

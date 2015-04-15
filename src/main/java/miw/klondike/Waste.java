@@ -34,15 +34,16 @@ public class Waste {
 		return cards;
 	}
 	
-	public Card lookCard(int index){
-		return this.isEmpty() ? null : cards.elementAt(index);
+	public Card lookLastCard() {
+		return isEmpty() ? null : this.cards.peek();
 	}
+	
 	
 	private boolean isEmpty(){
 		return this.cards.size() == 0;
 	}
 
 	public Card getLastCard() {
-		return this.cards.pop();
+		return isEmpty() ? null : this.cards.pop();
 	}
 }
