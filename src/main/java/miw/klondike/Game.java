@@ -102,6 +102,12 @@ public class Game {
 		assertTrue(numFoundationTableau < 7);
 		return this.foundationsTableau.get(numFoundationTableau);
 	}
+
+
+
+	public ArrayList<FoundationTableau> getFoundationsTableau() {
+		return this.foundationsTableau;
+	}
 	
 	
 

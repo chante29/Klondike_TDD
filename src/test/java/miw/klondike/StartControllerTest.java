@@ -14,7 +14,7 @@ public class StartControllerTest {
     
     @Before
     public void before(){
-        startController = new StartController();
+        startController = new StartController(new Game(new Deck(24), new Waste(0)));
     }
     
     @Test

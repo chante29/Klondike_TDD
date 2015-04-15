@@ -2,24 +2,24 @@ package miw.klondike;
 
 import java.util.ArrayList;
 
-public class StartController {
-	private ArrayList<FoundationTableau> foundationsTableau;
-	public StartController(){
+public class StartController extends AbstractController{
+	
+	public StartController(Game game){
+		super(game);
 		startFoundationsTableau();
 	}
 	
 	private void startFoundationsTableau() {
-		foundationsTableau = new ArrayList<FoundationTableau>();
-		for (int i = 0; i < 7; i++) {
+		for (int numFoundationTableau = 0; numFoundationTableau < 7; numFoundationTableau++) {
 			FoundationTableau foundationTableau = new FoundationTableau();
-			foundationsTableau.add(foundationTableau);
-			for (int j = 0; j <= i; j++) {
-				if(j== i){
+			for (int j = 0; j <= numFoundationTableau; j++) {
+				if(j== numFoundationTableau){
 					foundationTableau.addCard(new Card(Score.AS, Suit.HEARTS, false));
 				}else{
 					foundationTableau.addCard(new Card(Score.AS, Suit.HEARTS, true));
 				}
 			}
+			this.getGame().setFoundationTableau(numFoundationTableau, foundationTableau);
 		}
 
 		
@@ -40,8 +40,8 @@ public class StartController {
 		}
 		return foundations;
 	}
-	
+
 	public ArrayList<FoundationTableau> getFoundationsTableau() {
-		return foundationsTableau;
+		return this.getGame().getFoundationsTableau();
 	}
 }

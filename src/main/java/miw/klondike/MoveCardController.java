@@ -1,30 +1,29 @@
 package miw.klondike;
 
 
-public class MoveCardController {
+public class MoveCardController extends AbstractController{
 
-	private Game game;
 	 
 	public MoveCardController(Game game) {
-		this.game = game;
+		super(game);
 	}
 
 	public boolean moveFromDeckToWaste(){
-		switch(this.game.getDeck().getCards().size()){
+		switch(this.getGame().getDeck().getCards().size()){
 		case 0:
 			return false;
 		case 1:
 		case 2:
-			int sizeDeck = this.game.getDeck().getCards().size();
+			int sizeDeck = this.getGame().getDeck().getCards().size();
 			for (int numCard = 0; numCard < sizeDeck; numCard++) {
-				Card card = this.game.getDeck().getLastCard();
-				this.game.getWaste().getCards().add(card.turn());
+				Card card = this.getGame().getDeck().getLastCard();
+				this.getGame().getWaste().getCards().add(card.turn());
 			}
 			return true;
 		default:
 			for (int numCard = 0; numCard < 3; numCard++) {
-				Card card = this.game.getDeck().getLastCard();
-				this.game.getWaste().getCards().add(card.turn());
+				Card card = this.getGame().getDeck().getLastCard();
+				this.getGame().getWaste().getCards().add(card.turn());
 			}
 			return true;
 		}
@@ -85,14 +84,6 @@ public class MoveCardController {
 			}
 		}
 		return false;
-	}
-
-	public Game getGame() {
-		return game;
-	}
-
-	public void setGame(Game game) {
-		this.game = game;
 	}
 
 	
