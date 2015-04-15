@@ -17,13 +17,13 @@ public class MoveCardController {
 		case 2:
 			int sizeDeck = this.game.getDeck().getCards().size();
 			for (int numCard = 0; numCard < sizeDeck; numCard++) {
-				Card card = this.game.getDeck().getCard();
+				Card card = this.game.getDeck().getLastCard();
 				this.game.getWaste().getCards().add(card.turn());
 			}
 			return true;
 		default:
 			for (int numCard = 0; numCard < 3; numCard++) {
-				Card card = this.game.getDeck().getCard();
+				Card card = this.game.getDeck().getLastCard();
 				this.game.getWaste().getCards().add(card.turn());
 			}
 			return true;
