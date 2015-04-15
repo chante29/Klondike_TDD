@@ -14,9 +14,9 @@ public class StartController extends AbstractController{
 			FoundationTableau foundationTableau = new FoundationTableau();
 			for (int j = 0; j <= numFoundationTableau; j++) {
 				if(j== numFoundationTableau){
-					foundationTableau.addCard(new Card(Score.AS, Suit.HEARTS, false));
+					foundationTableau.addCard(CardFactory.getCard(Score.AS, Suit.HEARTS, false));
 				}else{
-					foundationTableau.addCard(new Card(Score.AS, Suit.HEARTS, true));
+					foundationTableau.addCard(CardFactory.getCard(Score.AS, Suit.HEARTS, true));
 				}
 			}
 			this.getGame().setFoundationTableau(numFoundationTableau, foundationTableau);

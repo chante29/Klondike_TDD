@@ -1,5 +1,19 @@
 package miw.klondike;
 
+import miw.klondike.score.As;
+import miw.klondike.score.Dame;
+import miw.klondike.score.Eight;
+import miw.klondike.score.Five;
+import miw.klondike.score.Four;
+import miw.klondike.score.Nine;
+import miw.klondike.score.Roi;
+import miw.klondike.score.Seven;
+import miw.klondike.score.Six;
+import miw.klondike.score.Ten;
+import miw.klondike.score.Three;
+import miw.klondike.score.Two;
+import miw.klondike.score.Valet;
+
 
 public class CardFactory {
 	
@@ -8,169 +22,169 @@ public class CardFactory {
 		case AS:
 			switch(suit){
 			case HEARTS:
-				return new Card(Score.AS, Suit.HEARTS, covered);
+				return new As(Suit.HEARTS, covered);
 			case DIAMONDS:
-				return new Card(Score.AS, Suit.DIAMONDS, covered);
+				return new As(Suit.DIAMONDS, covered);
 			case CLUBS:
-				return new Card(Score.AS, Suit.CLUBS, covered);
+				return new As(Suit.CLUBS, covered);
 			case SPADES:
-				return new Card(Score.AS, Suit.SPADES, covered);
+				return new As(Suit.SPADES, covered);
 				default:
 					throw new IllegalArgumentException("Unexpected type card");
 			}
 		case TWO:
 			switch(suit){
 			case HEARTS:
-				return new Card(Score.TWO, Suit.HEARTS, covered);
+				return new Two(Suit.HEARTS, covered);
 			case DIAMONDS:
-				return new Card(Score.TWO, Suit.DIAMONDS, covered);
+				return new Two(Suit.DIAMONDS, covered);
 			case CLUBS:
-				return new Card(Score.TWO, Suit.CLUBS, covered);
+				return new Two(Suit.CLUBS, covered);
 			case SPADES:
-				return new Card(Score.TWO, Suit.SPADES, covered);
+				return new Two(Suit.SPADES, covered);
 				default:
 					throw new IllegalArgumentException("Unexpected type card");
 			}
 		case THREE:
 			switch(suit){
 			case HEARTS:
-				return new Card(Score.THREE, Suit.HEARTS, covered);
+				return new Three(Suit.HEARTS, covered);
 			case DIAMONDS:
-				return new Card(Score.THREE, Suit.DIAMONDS, covered);
+				return new Three(Suit.DIAMONDS, covered);
 			case CLUBS:
-				return new Card(Score.THREE, Suit.CLUBS, covered);
+				return new Three(Suit.CLUBS, covered);
 			case SPADES:
-				return new Card(Score.THREE, Suit.SPADES, covered);
+				return new Three(Suit.SPADES, covered);
 				default:
 					throw new IllegalArgumentException("Unexpected type card");
 			}
 		case FOUR:
 			switch(suit){
 			case HEARTS:
-				return new Card(Score.FOUR, Suit.HEARTS, covered);
+				return new Four(Suit.HEARTS, covered);
 			case DIAMONDS:
-				return new Card(Score.FOUR, Suit.DIAMONDS, covered);
+				return new Four(Suit.DIAMONDS, covered);
 			case CLUBS:
-				return new Card(Score.FOUR, Suit.CLUBS, covered);
+				return new Four(Suit.CLUBS, covered);
 			case SPADES:
-				return new Card(Score.FOUR, Suit.SPADES, covered);
+				return new Four(Suit.SPADES, covered);
 				default:
 					throw new IllegalArgumentException("Unexpected type card");
 			}
 		case FIVE:
 			switch(suit){
 			case HEARTS:
-				return new Card(Score.FIVE, Suit.HEARTS, covered);
+				return new Five(Suit.HEARTS, covered);
 			case DIAMONDS:
-				return new Card(Score.FIVE, Suit.DIAMONDS, covered);
+				return new Five(Suit.DIAMONDS, covered);
 			case CLUBS:
-				return new Card(Score.FIVE, Suit.CLUBS, covered);
+				return new Five(Suit.CLUBS, covered);
 			case SPADES:
-				return new Card(Score.FIVE, Suit.SPADES, covered);
+				return new Five(Suit.SPADES, covered);
 				default:
 					throw new IllegalArgumentException("Unexpected type card");
 			}
 		case SIX:
 			switch(suit){
 			case HEARTS:
-				return new Card(Score.SIX, Suit.HEARTS, covered);
+				return new Six(Suit.HEARTS, covered);
 			case DIAMONDS:
-				return new Card(Score.SIX, Suit.DIAMONDS, covered);
+				return new Six(Suit.DIAMONDS, covered);
 			case CLUBS:
-				return new Card(Score.SIX, Suit.CLUBS, covered);
+				return new Six(Suit.CLUBS, covered);
 			case SPADES:
-				return new Card(Score.SIX, Suit.SPADES, covered);
+				return new Six(Suit.SPADES, covered);
 				default:
 					throw new IllegalArgumentException("Unexpected type card");
 			}
 		case SEVEN:
 			switch(suit){
 			case HEARTS:
-				return new Card(Score.SEVEN, Suit.HEARTS, covered);
+				return new Seven(Suit.HEARTS, covered);
 			case DIAMONDS:
-				return new Card(Score.SEVEN, Suit.DIAMONDS, covered);
+				return new Seven(Suit.DIAMONDS, covered);
 			case CLUBS:
-				return new Card(Score.SEVEN, Suit.CLUBS, covered);
+				return new Seven(Suit.CLUBS, covered);
 			case SPADES:
-				return new Card(Score.SEVEN, Suit.SPADES, covered);
+				return new Seven(Suit.SPADES, covered);
 				default:
 					throw new IllegalArgumentException("Unexpected type card");
 			}
 		case EIGHT:
 			switch(suit){
 			case HEARTS:
-				return new Card(Score.EIGHT, Suit.HEARTS, covered);
+				return new Eight(Suit.HEARTS, covered);
 			case DIAMONDS:
-				return new Card(Score.EIGHT, Suit.DIAMONDS, covered);
+				return new Eight(Suit.DIAMONDS, covered);
 			case CLUBS:
-				return new Card(Score.EIGHT, Suit.CLUBS, covered);
+				return new Eight(Suit.CLUBS, covered);
 			case SPADES:
-				return new Card(Score.EIGHT, Suit.SPADES, covered);
+				return new Eight(Suit.SPADES, covered);
 				default:
 					throw new IllegalArgumentException("Unexpected type card");
 			}
 		case NINE:
 			switch(suit){
 			case HEARTS:
-				return new Card(Score.NINE, Suit.HEARTS, covered);
+				return new Nine(Suit.HEARTS, covered);
 			case DIAMONDS:
-				return new Card(Score.NINE, Suit.DIAMONDS, covered);
+				return new Nine(Suit.DIAMONDS, covered);
 			case CLUBS:
-				return new Card(Score.NINE, Suit.CLUBS, covered);
+				return new Nine(Suit.CLUBS, covered);
 			case SPADES:
-				return new Card(Score.NINE, Suit.SPADES, covered);
+				return new Nine(Suit.SPADES, covered);
 				default:
 					throw new IllegalArgumentException("Unexpected type card");
 			}
 		case TEN:
 			switch(suit){
 			case HEARTS:
-				return new Card(Score.TEN, Suit.HEARTS, covered);
+				return new Ten(Suit.HEARTS, covered);
 			case DIAMONDS:
-				return new Card(Score.TEN, Suit.DIAMONDS, covered);
+				return new Ten(Suit.DIAMONDS, covered);
 			case CLUBS:
-				return new Card(Score.TEN, Suit.CLUBS, covered);
+				return new Ten(Suit.CLUBS, covered);
 			case SPADES:
-				return new Card(Score.TEN, Suit.SPADES, covered);
+				return new Ten(Suit.SPADES, covered);
 				default:
 					throw new IllegalArgumentException("Unexpected type card");
 			}
 		case VALET:
 			switch(suit){
 			case HEARTS:
-				return new Card(Score.VALET, Suit.HEARTS, covered);
+				return new Valet(Suit.HEARTS, covered);
 			case DIAMONDS:
-				return new Card(Score.VALET, Suit.DIAMONDS, covered);
+				return new Valet(Suit.DIAMONDS, covered);
 			case CLUBS:
-				return new Card(Score.VALET, Suit.CLUBS, covered);
+				return new Valet(Suit.CLUBS, covered);
 			case SPADES:
-				return new Card(Score.VALET, Suit.SPADES, covered);
+				return new Valet(Suit.SPADES, covered);
 				default:
 					throw new IllegalArgumentException("Unexpected type card");
 			}
 		case DAME:
 			switch(suit){
 			case HEARTS:
-				return new Card(Score.DAME, Suit.HEARTS, covered);
+				return new Dame(Suit.HEARTS, covered);
 			case DIAMONDS:
-				return new Card(Score.DAME, Suit.DIAMONDS, covered);
+				return new Dame(Suit.DIAMONDS, covered);
 			case CLUBS:
-				return new Card(Score.DAME, Suit.CLUBS, covered);
+				return new Dame(Suit.CLUBS, covered);
 			case SPADES:
-				return new Card(Score.DAME, Suit.SPADES, covered);
+				return new Dame(Suit.SPADES, covered);
 				default:
 					throw new IllegalArgumentException("Unexpected type card");
 			}
 		case ROI:
 			switch(suit){
 			case HEARTS:
-				return new Card(Score.ROI, Suit.HEARTS, covered);
+				return new Roi(Suit.HEARTS, covered);
 			case DIAMONDS:
-				return new Card(Score.ROI, Suit.DIAMONDS, covered);
+				return new Roi(Suit.DIAMONDS, covered);
 			case CLUBS:
-				return new Card(Score.ROI, Suit.CLUBS, covered);
+				return new Roi(Suit.CLUBS, covered);
 			case SPADES:
-				return new Card(Score.ROI, Suit.SPADES, covered);
+				return new Roi(Suit.SPADES, covered);
 				default:
 					throw new IllegalArgumentException("Unexpected type card");
 			}

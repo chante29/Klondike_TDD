@@ -1,14 +1,12 @@
 package miw.klondike;
 
-public class Card {
+public abstract class Card {
 
 	private boolean covered;
-	private Score score;
 	private Suit suit;
 	
-	public Card(Score score, Suit suit, boolean covered){
+	public Card(Suit suit, boolean covered){
 		this.covered = covered;
-		this.score = score;
 		this.suit = suit;
 	}
 	
@@ -29,13 +27,7 @@ public class Card {
 		this.covered = covered;
 	}
 
-	public Score getScore() {
-		return score;
-	}
-
-	public void setScore(Score score) {
-		this.score = score;
-	}
+	public abstract int getScore();
 
 	public Suit getSuit() {
 		return suit;
@@ -55,8 +47,6 @@ public class Card {
 			return false;
 		Card other = (Card) obj;
 		if (covered != other.covered)
-			return false;
-		if (score != other.score)
 			return false;
 		if (suit != other.suit)
 			return false;

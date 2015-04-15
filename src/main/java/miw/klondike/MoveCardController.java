@@ -33,14 +33,14 @@ public class MoveCardController extends AbstractController{
 		Card firstCardWaste = this.getGame().getWaste().lookLastCard();
 		Card firstCardFoundation = this.getGame().getFoundation(suitFoundation).lookLastCard();
 		if(firstCardWaste != null && firstCardFoundation != null){
-			if( firstCardWaste.getScore().ordinal() - 1 == firstCardFoundation.getScore().ordinal() && firstCardWaste.getSuit()== firstCardFoundation.getSuit()){
+			if( firstCardWaste.getScore() - 1 == firstCardFoundation.getScore() && firstCardWaste.getSuit()== firstCardFoundation.getSuit()){
 				this.getGame().getFoundation(suitFoundation).addCard(this.getGame().getWaste().getLastCard());
 				return true;
 			}else{
 				return false;
 			}
 			
-		}else if(firstCardWaste != null && firstCardWaste.getScore() == Score.AS && firstCardWaste.getSuit() == this.getGame().getFoundation(suitFoundation).getSuit()){
+		}else if(firstCardWaste != null && firstCardWaste.getScore() == 1 && firstCardWaste.getSuit() == this.getGame().getFoundation(suitFoundation).getSuit()){
 			this.getGame().getFoundation(suitFoundation).addCard(this.getGame().getWaste().getLastCard());
 			return true;
 		}
@@ -53,7 +53,7 @@ public class MoveCardController extends AbstractController{
 				Card lastCardWaste = this.getGame().getWaste().lookLastCard();
 				Card lastCardFoundationTableau = this.getGame().getFoundationTableau(numFoundationTableau).lookLastCard();
 				
-				if(lastCardFoundationTableau.getScore().ordinal() - 1 == lastCardWaste.getScore().ordinal()){
+				if(lastCardFoundationTableau.getScore() - 1 == lastCardWaste.getScore()){
 					switch(lastCardFoundationTableau.getSuit()){
 					case HEARTS:
 					case DIAMONDS:
@@ -76,7 +76,7 @@ public class MoveCardController extends AbstractController{
 					return false;
 				}
 			}else {
-				if(this.getGame().getWaste().lookLastCard().getScore() == Score.ROI){
+				if(this.getGame().getWaste().lookLastCard().getScore() == 13){
 					this.getGame().getFoundationTableau(numFoundationTableau).addCard(this.getGame().getWaste().getLastCard());
 					return true;
 				}
