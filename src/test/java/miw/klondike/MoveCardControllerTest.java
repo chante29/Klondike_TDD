@@ -102,7 +102,7 @@ public class MoveCardControllerTest {
 			
 			//Que no haya cartas en el foundation y waste tenga el as del palo del foundation
 			Stack<Card> cardsWaste = new Stack<Card>();
-			Card card = new Card(Score.AS, Suit.valueOf(numFoundation), false);
+			Card card = CardFactory.getCard(Score.AS, Suit.valueOf(numFoundation), false);
 			cardsWaste.add(card);
 			this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
 			this.moveCardController.getGame().setFoundation(Suit.valueOf(numFoundation), new Foundation(0, Suit.valueOf(numFoundation)));
@@ -113,7 +113,7 @@ public class MoveCardControllerTest {
 			//Que no haya cartas en el foundation y waste tenga el as de otro palo del foundation
 			cardsWaste = new Stack<Card>();
 			int numDiferentSuit = numFoundation == 3 ? 2 : numFoundation + 1;
-			card = new Card(Score.AS, Suit.valueOf(numDiferentSuit), false);
+			card = CardFactory.getCard(Score.AS, Suit.valueOf(numDiferentSuit), false);
 			cardsWaste.add(card);
 			this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
 			this.moveCardController.getGame().setFoundation(Suit.valueOf(numFoundation), new Foundation(0, Suit.valueOf(numFoundation)));
@@ -123,7 +123,7 @@ public class MoveCardControllerTest {
 			
 			//Que no haya cartas en el foundation y waste tenga una carta del palo del foundation que no sea el as
 			cardsWaste = new Stack<Card>();
-			card = new Card(Score.ROI, Suit.valueOf(numFoundation), false);
+			card = CardFactory.getCard(Score.ROI, Suit.valueOf(numFoundation), false);
 			cardsWaste.add(card);
 			this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
 			this.moveCardController.getGame().setFoundation(Suit.valueOf(numFoundation), new Foundation(0, Suit.valueOf(numFoundation)));
@@ -133,17 +133,17 @@ public class MoveCardControllerTest {
 			
 			//Que la carta del Waste no sea la consecutiva del palo del foundation
 			cardsWaste = new Stack<Card>();
-			card = new Card(Score.ROI, Suit.valueOf(numFoundation), false);
+			card = CardFactory.getCard(Score.ROI, Suit.valueOf(numFoundation), false);
 			cardsWaste.add(card);
 			this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
 			this.moveCardController.getGame().setFoundation(Suit.valueOf(numFoundation), new Foundation(7, Suit.valueOf(numFoundation)));
 			assertFalse(this.moveCardController.moveFromWasteToFoundation(Suit.valueOf(numFoundation)));
-			assertTrue(this.moveCardController.getGame().getFoundation(Suit.valueOf(numFoundation)).lookLastCard().equals(new Card(Score.SEVEN, Suit.valueOf(numFoundation), false) ));
+			assertTrue(this.moveCardController.getGame().getFoundation(Suit.valueOf(numFoundation)).lookLastCard().equals(CardFactory.getCard(Score.SEVEN, Suit.valueOf(numFoundation), false) ));
 			
 			
 			//Que se cumpla todo para que haya movimiento
 			cardsWaste = new Stack<Card>();
-			card = new Card(Score.SIX, Suit.valueOf(numFoundation), false);
+			card = CardFactory.getCard(Score.SIX, Suit.valueOf(numFoundation), false);
 			cardsWaste.add(card);
 			this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
 			this.moveCardController.getGame().setFoundation(Suit.valueOf(numFoundation), new Foundation(5, Suit.valueOf(numFoundation)));
@@ -166,7 +166,7 @@ public class MoveCardControllerTest {
 			
 			//Que no haya cartas en FoundationTableau y waste tenga un rey
 			Stack<Card> cardsWaste = new Stack<Card>();
-			Card card = new Card(Score.ROI, Suit.HEARTS, false);
+			Card card = CardFactory.getCard(Score.ROI, Suit.HEARTS, false);
 			cardsWaste.add(card);
 			this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
 			this.moveCardController.getGame().setFoundationTableau(numFoundationTableau, new FoundationTableau());
@@ -176,7 +176,7 @@ public class MoveCardControllerTest {
 			
 			//Que no haya cartas en FoundationTableau y waste no tenga un rey
 			cardsWaste = new Stack<Card>();
-			card = new Card(Score.AS, Suit.HEARTS, false);
+			card = CardFactory.getCard(Score.AS, Suit.HEARTS, false);
 			cardsWaste.add(card);
 			this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
 			this.moveCardController.getGame().setFoundationTableau(numFoundationTableau, new FoundationTableau());
@@ -187,11 +187,11 @@ public class MoveCardControllerTest {
 			
 			//Que la carta de waste no sea una inferior, pero sí del mismo color de la de FoundationTableau
 			cardsWaste = new Stack<Card>();
-			card = new Card(Score.TWO, Suit.HEARTS, false);
+			card = CardFactory.getCard(Score.TWO, Suit.HEARTS, false);
 			cardsWaste.add(card);
 			this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
 			FoundationTableau foundationTableau = new FoundationTableau();
-			Card cardFoundationTableau = new Card(Score.ROI, Suit.HEARTS, false);
+			Card cardFoundationTableau = CardFactory.getCard(Score.ROI, Suit.HEARTS, false);
 			foundationTableau.addCard(cardFoundationTableau);
 			this.moveCardController.getGame().setFoundationTableau(numFoundationTableau, foundationTableau);
 			assertFalse(this.moveCardController.moveFromWasteToFoundationTableau(numFoundationTableau));
@@ -201,11 +201,11 @@ public class MoveCardControllerTest {
 			
 			//Que la carta de waste sea una inferior y del mismo color de la de FoundationTableau
 			cardsWaste = new Stack<Card>();
-			card = new Card(Score.TWO, Suit.HEARTS, false);
+			card = CardFactory.getCard(Score.TWO, Suit.HEARTS, false);
 			cardsWaste.add(card);
 			this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
 			foundationTableau = new FoundationTableau();
-			cardFoundationTableau = new Card(Score.THREE, Suit.DIAMONDS, false);
+			cardFoundationTableau = CardFactory.getCard(Score.THREE, Suit.DIAMONDS, false);
 			foundationTableau.addCard(cardFoundationTableau);
 			this.moveCardController.getGame().setFoundationTableau(numFoundationTableau, foundationTableau);
 			assertFalse(this.moveCardController.moveFromWasteToFoundationTableau(numFoundationTableau));
@@ -216,11 +216,11 @@ public class MoveCardControllerTest {
 			
 			//Que la carta de waste sea una inferior y de distinto color de la de FoundationTableau
 			cardsWaste = new Stack<Card>();
-			card = new Card(Score.TWO, Suit.HEARTS, false);
+			card = CardFactory.getCard(Score.TWO, Suit.HEARTS, false);
 			cardsWaste.add(card);
 			this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
 			foundationTableau = new FoundationTableau();
-			cardFoundationTableau = new Card(Score.THREE, Suit.CLUBS, false);
+			cardFoundationTableau = CardFactory.getCard(Score.THREE, Suit.CLUBS, false);
 			foundationTableau.addCard(cardFoundationTableau);
 			this.moveCardController.getGame().setFoundationTableau(numFoundationTableau, foundationTableau);
 			assertTrue(this.moveCardController.moveFromWasteToFoundationTableau(numFoundationTableau));
@@ -231,11 +231,11 @@ public class MoveCardControllerTest {
 			
 			//Que la carta de waste no sea una inferior pero sí de distinto color de la de FoundationTableau
 			cardsWaste = new Stack<Card>();
-			card = new Card(Score.FOUR, Suit.HEARTS, false);
+			card = CardFactory.getCard(Score.FOUR, Suit.HEARTS, false);
 			cardsWaste.add(card);
 			this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
 			foundationTableau = new FoundationTableau();
-			cardFoundationTableau = new Card(Score.THREE, Suit.CLUBS, false);
+			cardFoundationTableau = CardFactory.getCard(Score.THREE, Suit.CLUBS, false);
 			foundationTableau.addCard(cardFoundationTableau);
 			this.moveCardController.getGame().setFoundationTableau(numFoundationTableau, foundationTableau);
 			assertFalse(this.moveCardController.moveFromWasteToFoundationTableau(numFoundationTableau));
@@ -246,11 +246,11 @@ public class MoveCardControllerTest {
 			
 			//Que la carta de FoundationTableau sea un as
 			cardsWaste = new Stack<Card>();
-			card = new Card(Score.FOUR, Suit.HEARTS, false);
+			card = CardFactory.getCard(Score.FOUR, Suit.HEARTS, false);
 			cardsWaste.add(card);
 			this.moveCardController = new MoveCardController(new Game(new Deck(3), new Waste(cardsWaste)));
 			foundationTableau = new FoundationTableau();
-			cardFoundationTableau = new Card(Score.AS, Suit.CLUBS, false);
+			cardFoundationTableau = CardFactory.getCard(Score.AS, Suit.CLUBS, false);
 			foundationTableau.addCard(cardFoundationTableau);
 			this.moveCardController.getGame().setFoundationTableau(numFoundationTableau, foundationTableau);
 			assertFalse(this.moveCardController.moveFromWasteToFoundationTableau(numFoundationTableau));
