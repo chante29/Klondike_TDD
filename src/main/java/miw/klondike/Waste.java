@@ -9,6 +9,6 @@ public class Waste extends StackCards {
 	}
 	
 	public Waste(int numCards) {
-		super(GenerateRandomsCards.setStackCardRandom(numCards, true));
+		super(GenerateRandomsCards.setStackCardRandom(numCards, false));
 	}	
 }
