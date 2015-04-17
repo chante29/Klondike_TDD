@@ -9,12 +9,12 @@ public class MoveCardController extends AbstractController{
 	}
 
 	public boolean moveFromDeckToWaste(){
-		int numCardsMove = this.getGame().getDeck().getCards().size() == MAXIMUM_CARDS_MOVE_DECK_TO_WASTE ? MAXIMUM_CARDS_MOVE_DECK_TO_WASTE : this.getGame().getDeck().getCards().size();
+		int numCardsMove = this.getGame().getDeck().getCards().size() < MAXIMUM_CARDS_MOVE_DECK_TO_WASTE ? this.getGame().getDeck().getCards().size() : MAXIMUM_CARDS_MOVE_DECK_TO_WASTE;
 		for (int numCard = 0; numCard < numCardsMove; numCard++) {
 			Card card = this.getGame().getDeck().getLastCard();
 			this.getGame().getWaste().getCards().add(card.turn());
 		}
-		return true;
+		return numCardsMove != 0;
 	}
 	
 	public boolean moveFromWasteToFoundation(Suit suitFoundation){
