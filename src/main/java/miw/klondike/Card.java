@@ -62,6 +62,17 @@ public abstract class Card {
 		return this.getSuit().getColor();
 	}
 	
+	public boolean isOnePointGreat(Card card){
+		return this.getScore() -1 == card.getScore();
+	}
+	
+	public boolean isOnePointLess(Card card){
+		return this.getScore() + 1 == card.getScore();
+	}
+	
+	public boolean isTheSameColor(Card card){
+		return this.getColor() == card.getColor();
+	}
 	
 	
 }

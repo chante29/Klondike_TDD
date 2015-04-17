@@ -1,5 +1,7 @@
 package miw.klondike;
 
+import miw.klondike.score.As;
+
 
 public class MoveCardController extends AbstractController{
 	private final int MAXIMUM_CARDS_MOVE_DECK_TO_WASTE = 3;
@@ -21,14 +23,14 @@ public class MoveCardController extends AbstractController{
 		Card firstCardWaste = this.getGame().getWaste().lookLastCard();
 		Card firstCardFoundation = this.getGame().getFoundation(suitFoundation).lookLastCard();
 		if(firstCardWaste != null && firstCardFoundation != null){
-			if( firstCardWaste.getScore() - 1 == firstCardFoundation.getScore() && firstCardWaste.getSuit().getColor() == firstCardFoundation.getSuit().getColor()){
+			if( firstCardWaste.isOnePointGreat(firstCardFoundation) && firstCardWaste.isTheSameColor(firstCardFoundation)){
 				this.getGame().getFoundation(suitFoundation).addCard(this.getGame().getWaste().getLastCard());
 				return true;
 			}else{
 				return false;
 			}
 			
-		}else if(firstCardWaste != null && firstCardWaste.getScore() == 1 && firstCardWaste.getSuit().equals(this.getGame().getFoundation(suitFoundation).getSuit())){
+		}else if(firstCardWaste != null && firstCardWaste.getClass().equals(As.class) && firstCardWaste.getSuit().equals(this.getGame().getFoundation(suitFoundation).getSuit())){
 			this.getGame().getFoundation(suitFoundation).addCard(this.getGame().getWaste().getLastCard());
 			return true;
 		}
@@ -41,7 +43,7 @@ public class MoveCardController extends AbstractController{
 				Card lastCardWaste = this.getGame().getWaste().lookLastCard();
 				Card lastCardFoundationTableau = this.getGame().getFoundationTableau(numFoundationTableau).lookLastCard();
 				
-				if(lastCardFoundationTableau.getScore() - 1 == lastCardWaste.getScore() && lastCardWaste.getColor() != lastCardFoundationTableau.getColor() ){
+				if(lastCardWaste.isOnePointLess(lastCardFoundationTableau) && !lastCardWaste.isTheSameColor(lastCardFoundationTableau) ){
 							this.getGame().getFoundationTableau(numFoundationTableau).addCard(this.getGame().getWaste().getLastCard());
 							return true;		
 				}else{
