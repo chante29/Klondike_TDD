@@ -10,7 +10,7 @@ public class StartController extends AbstractController{
 	}
 	
 	private void startFoundationsTableau() {
-		for (int numFoundationTableau = 0; numFoundationTableau < 7; numFoundationTableau++) {
+		for (int numFoundationTableau = 0; numFoundationTableau < Game.MAX_FOUNDATIONS_TABLEAU; numFoundationTableau++) {
 			FoundationTableau foundationTableau = new FoundationTableau();
 			for (int j = 0; j <= numFoundationTableau; j++) {
 				if(j== numFoundationTableau){
@@ -35,7 +35,7 @@ public class StartController extends AbstractController{
 	
 	public ArrayList<Foundation> getFoundations(){
 		ArrayList<Foundation> foundations = new ArrayList<Foundation>();
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < Game.MAX_FOUNDATIONS; i++) {
 			foundations.add(new Foundation(0, Suit.HEARTS));
 		}
 		return foundations;

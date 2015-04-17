@@ -5,14 +5,16 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.Stack;
 
-import miw.klondike.suit.SuitCard;
-
 public class Game {
 
+	public static final int MAX_FOUNDATIONS_TABLEAU = 7;
+	public static final int MAX_FOUNDATIONS = 4;
 	private Deck deck;
 	private Waste waste;
 	private ArrayList<Foundation> foundations;
 	private ArrayList<FoundationTableau> foundationsTableau;
+	
+	
 	
 	
 	public Game(Deck deck, Waste waste) {
@@ -85,7 +87,7 @@ public class Game {
 
 
 	public FoundationTableau getFoundationTableau(int numFoundationTableau) {
-		assertTrue(numFoundationTableau < 7);
+		assertTrue(numFoundationTableau < MAX_FOUNDATIONS_TABLEAU);
 		return this.foundationsTableau.get(numFoundationTableau);
 	}
 

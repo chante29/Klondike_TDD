@@ -5,7 +5,8 @@ import java.awt.Color;
 import miw.klondike.suit.SuitCard;
 
 public abstract class Card {
-
+	public final static int MAX_SCORE = 13;
+	
 	private boolean covered;
 	private SuitCard suit;
 	

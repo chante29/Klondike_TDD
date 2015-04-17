@@ -2,31 +2,19 @@ package miw.klondike;
 
 
 public class MoveCardController extends AbstractController{
-
+	private final int MAXIMUM_CARDS_MOVE_DECK_TO_WASTE = 3;
 	 
 	public MoveCardController(Game game) {
 		super(game);
 	}
 
 	public boolean moveFromDeckToWaste(){
-		switch(this.getGame().getDeck().getCards().size()){
-		case 0:
-			return false;
-		case 1:
-		case 2:
-			int sizeDeck = this.getGame().getDeck().getCards().size();
-			for (int numCard = 0; numCard < sizeDeck; numCard++) {
-				Card card = this.getGame().getDeck().getLastCard();
-				this.getGame().getWaste().getCards().add(card.turn());
-			}
-			return true;
-		default:
-			for (int numCard = 0; numCard < 3; numCard++) {
-				Card card = this.getGame().getDeck().getLastCard();
-				this.getGame().getWaste().getCards().add(card.turn());
-			}
-			return true;
+		int numCardsMove = this.getGame().getDeck().getCards().size() == MAXIMUM_CARDS_MOVE_DECK_TO_WASTE ? MAXIMUM_CARDS_MOVE_DECK_TO_WASTE : this.getGame().getDeck().getCards().size();
+		for (int numCard = 0; numCard < numCardsMove; numCard++) {
+			Card card = this.getGame().getDeck().getLastCard();
+			this.getGame().getWaste().getCards().add(card.turn());
 		}
+		return true;
 	}
 	
 	public boolean moveFromWasteToFoundation(Suit suitFoundation){
@@ -60,7 +48,7 @@ public class MoveCardController extends AbstractController{
 					return false;
 				}
 			}else {
-				if(this.getGame().getWaste().lookLastCard().getScore() == 13){
+				if(this.getGame().getWaste().lookLastCard().getScore() == Card.MAX_SCORE){
 					this.getGame().getFoundationTableau(numFoundationTableau).addCard(this.getGame().getWaste().getLastCard());
 					return true;
 				}

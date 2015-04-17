@@ -10,7 +10,7 @@ public class Foundation extends StackCards{
 
 	public Foundation(int numCards, Suit suit){
 		super();
-		assertFalse(numCards > 12);
+		assertFalse(numCards > Card.MAX_SCORE);
 		for (int numCard = 1; numCard <= numCards; numCard++) {
 			this.addCard(CardFactory.getCard(Score.valueOf(numCard), suit, false));			
 		}
