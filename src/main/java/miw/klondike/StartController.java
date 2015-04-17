@@ -26,11 +26,11 @@ public class StartController extends AbstractController{
 	}
 
 	public int getSizeDeck(){
-		return 24;
+		return this.getGame().getDeck().size();
 	}
 	
 	public int getSizeWaste(){
-		return 0;
+		return this.getGame().getWaste().size();
 	}
 	
 	public ArrayList<Foundation> getFoundations(){
