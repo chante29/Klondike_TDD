@@ -5,6 +5,9 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.Stack;
 
+import miw.klondike.enumeration.Suit;
+import miw.klondike.factory.SuitCardFactory;
+
 public class Game {
 
 	public static final int MAX_FOUNDATIONS_TABLEAU = 7;

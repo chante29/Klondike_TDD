@@ -1,6 +1,13 @@
-package miw.klondike;
+package miw.klondike.controller;
 
 import java.util.ArrayList;
+
+import miw.klondike.Foundation;
+import miw.klondike.FoundationTableau;
+import miw.klondike.Game;
+import miw.klondike.enumeration.Score;
+import miw.klondike.enumeration.Suit;
+import miw.klondike.factory.CardFactory;
 
 public class StartController extends AbstractController{
 	

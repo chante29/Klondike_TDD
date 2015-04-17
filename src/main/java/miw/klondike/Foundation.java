@@ -1,6 +1,10 @@
 package miw.klondike;
 
 import static org.junit.Assert.assertFalse;
+import miw.klondike.enumeration.Score;
+import miw.klondike.enumeration.Suit;
+import miw.klondike.factory.CardFactory;
+import miw.klondike.factory.SuitCardFactory;
 import miw.klondike.suit.SuitCard;
 
 

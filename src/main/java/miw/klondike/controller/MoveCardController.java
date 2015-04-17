@@ -1,5 +1,9 @@
-package miw.klondike;
+package miw.klondike.controller;
 
+import miw.klondike.Card;
+import miw.klondike.Game;
+import miw.klondike.enumeration.Suit;
+import miw.klondike.factory.SuitCardFactory;
 import miw.klondike.score.As;
 import miw.klondike.score.Roi;
 

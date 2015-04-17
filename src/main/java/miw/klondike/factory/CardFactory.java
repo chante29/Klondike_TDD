@@ -1,5 +1,8 @@
-package miw.klondike;
+package miw.klondike.factory;
 
+import miw.klondike.Card;
+import miw.klondike.enumeration.Score;
+import miw.klondike.enumeration.Suit;
 import miw.klondike.score.As;
 import miw.klondike.score.Dame;
 import miw.klondike.score.Eight;

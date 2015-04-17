@@ -1,4 +1,6 @@
-package miw.klondike;
+package miw.klondike.controller;
+
+import miw.klondike.Game;
 
 public abstract class AbstractController {
 	private Game game;

@@ -1,5 +1,6 @@
-package miw.klondike;
+package miw.klondike.factory;
 
+import miw.klondike.enumeration.Suit;
 import miw.klondike.suit.Clubs;
 import miw.klondike.suit.Diamonds;
 import miw.klondike.suit.Hearts;

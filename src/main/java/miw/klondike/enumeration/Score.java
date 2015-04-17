@@ -1,4 +1,4 @@
-package miw.klondike;
+package miw.klondike.enumeration;
 
 import java.util.HashMap;
 import java.util.Map;

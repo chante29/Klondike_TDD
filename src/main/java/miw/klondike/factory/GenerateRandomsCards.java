@@ -1,6 +1,10 @@
-package miw.klondike;
+package miw.klondike.factory;
 
 import java.util.Stack;
+
+import miw.klondike.Card;
+import miw.klondike.enumeration.Score;
+import miw.klondike.enumeration.Suit;
 
 public class GenerateRandomsCards {
 	

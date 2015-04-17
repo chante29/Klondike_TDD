@@ -6,6 +6,11 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Stack;
 
+import miw.klondike.controller.MoveCardController;
+import miw.klondike.enumeration.Score;
+import miw.klondike.enumeration.Suit;
+import miw.klondike.factory.CardFactory;
+
 import org.junit.Before;
 import org.junit.Test;
 

@@ -2,7 +2,7 @@ package miw.klondike.suit;
 
 import java.awt.Color;
 
-import miw.klondike.Suit;
+import miw.klondike.enumeration.Suit;
 
 public class Diamonds extends SuitCard{
 	private final int NUMBER_SUIT = 1;

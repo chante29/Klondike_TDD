@@ -2,6 +2,8 @@ package miw.klondike;
 
 import java.util.Stack;
 
+import miw.klondike.factory.GenerateRandomsCards;
+
 public class Deck extends StackCards {
 
 	public Deck(Stack<Card> cards) {
