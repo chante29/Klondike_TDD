@@ -74,5 +74,9 @@ public abstract class Card {
 		return this.getColor() == card.getColor();
 	}
 	
+	public boolean isTheSameSuit(Card card){
+		return this.getSuit().equals(card.getSuit());
+	}
+	
 	
 }

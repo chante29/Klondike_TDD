@@ -1,6 +1,7 @@
 package miw.klondike;
 
 import miw.klondike.score.As;
+import miw.klondike.score.Roi;
 
 
 public class MoveCardController extends AbstractController{
@@ -30,6 +31,19 @@ public class MoveCardController extends AbstractController{
 		
 	}
 	
+	public boolean moveFromWasteToFoundationTableau(int numFoundationTableau){
+		
+		if(this.wasteHasCards() && ((!this.foundationTableauHasCards(numFoundationTableau) && this.cardWasteIsRoi())
+									|| (this.foundationTableauHasCards(numFoundationTableau) &&  isMovementWasteToFoundationTableauValid(numFoundationTableau)))){
+		
+			this.getGame().getFoundationTableau(numFoundationTableau).addCard(this.getGame().getWaste().getLastCard());
+			return true;		
+		}
+		return false;
+	}
+
+
+	
 	private boolean wasteHasAsTheSameSuit(Suit suitFoundation){
 		return this.getGame().getWaste().lookLastCard().getClass().equals(As.class) && this.getGame().getWaste().lookLastCard().getSuit().equals(SuitCardFactory.getSuitCard(suitFoundation));
 	}
@@ -45,30 +59,20 @@ public class MoveCardController extends AbstractController{
 	
 	private boolean isMovementWasteToFoundationValid(Suit suitFoundation){
 		return this.getGame().getWaste().lookLastCard().isOnePointGreat(this.getGame().getFoundation(suitFoundation).lookLastCard()) 
-				&& this.getGame().getWaste().lookLastCard().isTheSameColor(this.getGame().getFoundation(suitFoundation).lookLastCard());
+				&& this.getGame().getWaste().lookLastCard().isTheSameSuit(this.getGame().getFoundation(suitFoundation).lookLastCard());
 	}
 	
-	public boolean moveFromWasteToFoundationTableau(int numFoundationTableau){
-		if(this.getGame().getWaste().lookLastCard() != null){
-			if(this.getGame().getFoundationTableau(numFoundationTableau).lookLastCard()!= null){
-				Card lastCardWaste = this.getGame().getWaste().lookLastCard();
-				Card lastCardFoundationTableau = this.getGame().getFoundationTableau(numFoundationTableau).lookLastCard();
-				
-				if(lastCardWaste.isOnePointLess(lastCardFoundationTableau) && !lastCardWaste.isTheSameColor(lastCardFoundationTableau) ){
-							this.getGame().getFoundationTableau(numFoundationTableau).addCard(this.getGame().getWaste().getLastCard());
-							return true;		
-				}else{
-					return false;
-				}
-			}else {
-				if(this.getGame().getWaste().lookLastCard().getScore() == Card.MAX_SCORE){
-					this.getGame().getFoundationTableau(numFoundationTableau).addCard(this.getGame().getWaste().getLastCard());
-					return true;
-				}
-			}
-		}
-		return false;
+	private boolean foundationTableauHasCards(int numFoundationTableau){
+		return this.getGame().getFoundationTableau(numFoundationTableau).lookLastCard()!= null;
+	}
+	
+	private boolean cardWasteIsRoi(){
+		return this.getGame().getWaste().lookLastCard().getClass().equals(Roi.class);
 	}
 
+	private boolean isMovementWasteToFoundationTableauValid(int numFoundationTableau){
+		return this.getGame().getWaste().lookLastCard().isOnePointLess(this.getGame().getFoundationTableau(numFoundationTableau).lookLastCard()) 
+				&& !this.getGame().getWaste().lookLastCard().isTheSameColor(this.getGame().getFoundationTableau(numFoundationTableau).lookLastCard());
+	}
 	
 }
