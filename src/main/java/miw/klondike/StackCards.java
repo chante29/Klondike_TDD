@@ -27,7 +27,7 @@ public class StackCards {
 	}
 	
 	
-	private boolean isEmpty(){
+	public boolean isEmpty(){
 		return this.cards.size() == 0;
 	}
 

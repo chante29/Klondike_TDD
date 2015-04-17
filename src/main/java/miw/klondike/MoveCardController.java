@@ -20,21 +20,32 @@ public class MoveCardController extends AbstractController{
 	}
 	
 	public boolean moveFromWasteToFoundation(Suit suitFoundation){
-		Card firstCardWaste = this.getGame().getWaste().lookLastCard();
-		Card firstCardFoundation = this.getGame().getFoundation(suitFoundation).lookLastCard();
-		if(firstCardWaste != null && firstCardFoundation != null){
-			if( firstCardWaste.isOnePointGreat(firstCardFoundation) && firstCardWaste.isTheSameColor(firstCardFoundation)){
-				this.getGame().getFoundation(suitFoundation).addCard(this.getGame().getWaste().getLastCard());
-				return true;
-			}else{
-				return false;
-			}
-			
-		}else if(firstCardWaste != null && firstCardWaste.getClass().equals(As.class) && firstCardWaste.getSuit().equals(this.getGame().getFoundation(suitFoundation).getSuit())){
+		if( wasteHasCards() && ((!foundationHasCards(suitFoundation) && wasteHasAsTheSameSuit(suitFoundation)) 
+								||(foundationHasCards(suitFoundation) && isMovementWasteToFoundationValid(suitFoundation)))){
+
 			this.getGame().getFoundation(suitFoundation).addCard(this.getGame().getWaste().getLastCard());
 			return true;
-		}
+		}	
 		return false;
+		
+	}
+	
+	private boolean wasteHasAsTheSameSuit(Suit suitFoundation){
+		return this.getGame().getWaste().lookLastCard().getClass().equals(As.class) && this.getGame().getWaste().lookLastCard().getSuit().equals(SuitCardFactory.getSuitCard(suitFoundation));
+	}
+	
+	private boolean wasteHasCards(){
+		return this.getGame().getWaste().lookLastCard() != null;
+	}
+	
+	private boolean foundationHasCards(Suit suitFoundation){
+		return this.getGame().getFoundation(suitFoundation).lookLastCard() != null;
+	}
+	
+	
+	private boolean isMovementWasteToFoundationValid(Suit suitFoundation){
+		return this.getGame().getWaste().lookLastCard().isOnePointGreat(this.getGame().getFoundation(suitFoundation).lookLastCard()) 
+				&& this.getGame().getWaste().lookLastCard().isTheSameColor(this.getGame().getFoundation(suitFoundation).lookLastCard());
 	}
 	
 	public boolean moveFromWasteToFoundationTableau(int numFoundationTableau){
