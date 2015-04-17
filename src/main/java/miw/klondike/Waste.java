@@ -9,15 +9,6 @@ public class Waste extends StackCards {
 	}
 	
 	public Waste(int numCards) {
-		super(setStackCardRandom(numCards, false));
-	}
-	
-	private static Stack<Card> setStackCardRandom(int sizeDeck, boolean covered) {
-		Stack<Card> cards = new Stack<Card>();
-		for (int num = 0; num < sizeDeck; num++) {
-			cards.add(CardFactory.getCard(Score.AS, Suit.HEARTS, covered));
-		}
-		return cards;
-	}
-	
+		super(GenerateRandomsCards.setStackCardRandom(numCards, true));
+	}	
 }

@@ -9,15 +9,6 @@ public class Deck extends StackCards {
 	}
 	
 	public Deck(int numCards){
-		super(setStackCardRandom(numCards, true));
+		super(GenerateRandomsCards.setStackCardRandom(numCards, true));
 	}
-	
-	private static Stack<Card> setStackCardRandom(int sizeDeck, boolean covered) {
-		Stack<Card> cards = new Stack<Card>();
-		for (int num = 0; num < sizeDeck; num++) {
-			cards.add(CardFactory.getCard(Score.AS, Suit.HEARTS, covered));
-		}
-		return cards;
-	}
-	
 }
