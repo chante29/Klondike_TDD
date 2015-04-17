@@ -1,11 +1,15 @@
 package miw.klondike;
 
+import java.awt.Color;
+
+import miw.klondike.suit.SuitCard;
+
 public abstract class Card {
 
 	private boolean covered;
-	private Suit suit;
+	private SuitCard suit;
 	
-	public Card(Suit suit, boolean covered){
+	public Card(SuitCard suit, boolean covered){
 		this.covered = covered;
 		this.suit = suit;
 	}
@@ -29,11 +33,11 @@ public abstract class Card {
 
 	public abstract int getScore();
 
-	public Suit getSuit() {
+	public SuitCard getSuit() {
 		return suit;
 	}
 
-	public void setSuit(Suit suit) {
+	public void setSuit(SuitCard suit) {
 		this.suit = suit;
 	}
 
@@ -48,9 +52,13 @@ public abstract class Card {
 		Card other = (Card) obj;
 		if (covered != other.covered)
 			return false;
-		if (suit != other.suit)
+		if (!suit.equals(other.suit))
 			return false;
 		return true;
+	}
+	
+	public Color getColor(){
+		return this.getSuit().getColor();
 	}
 	
 	

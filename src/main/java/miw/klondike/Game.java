@@ -1,8 +1,11 @@
 package miw.klondike;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.Stack;
-import static org.junit.Assert.*;
+
+import miw.klondike.suit.SuitCard;
 
 public class Game {
 
@@ -63,23 +66,7 @@ public class Game {
 
 
 	public void setFoundation(Suit suit, Foundation foundation) {
-		switch(suit){
-		case HEARTS:
-			this.foundations.set(0, foundation);
-			break;
-		case DIAMONDS:
-			this.foundations.set(1, foundation);
-			break;
-		case CLUBS:
-			this.foundations.set(2, foundation);
-			break;
-		case SPADES:
-			this.foundations.set(3, foundation);
-			break;
-		default:
-			assert false;
-		}
-		
+		this.foundations.set(SuitCardFactory.getSuitCard(suit).getNumber(), foundation);	
 	}
 
 
@@ -92,8 +79,7 @@ public class Game {
 
 
 	public Foundation getFoundation(Suit suitFoundation) {
-		return this.foundations.get(suitFoundation.ordinal());
-		
+		return foundations.get(SuitCardFactory.getSuitCard(suitFoundation).getNumber());		
 	}
 
 

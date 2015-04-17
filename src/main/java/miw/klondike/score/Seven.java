@@ -1,12 +1,12 @@
 package miw.klondike.score;
 
 import miw.klondike.Card;
-import miw.klondike.Suit;
+import miw.klondike.suit.SuitCard;
 
 public class Seven extends Card{
 	
 	private final int score = 7;
-	public Seven(Suit suit, boolean covered) {
+	public Seven(SuitCard suit, boolean covered) {
 		super(suit, covered);
 	}
 

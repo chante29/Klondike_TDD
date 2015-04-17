@@ -1,10 +1,11 @@
 package miw.klondike;
 
 import static org.junit.Assert.assertFalse;
+import miw.klondike.suit.SuitCard;
 
 
 public class Foundation extends StackCards{
-	private Suit suit;
+	private SuitCard suitCard;
 	
 
 	public Foundation(int numCards, Suit suit){
@@ -54,11 +55,11 @@ public class Foundation extends StackCards{
 			}
 			
 		}
-		this.suit = suit;
+		this.suitCard = SuitCardFactory.getSuitCard(suit);
 	}
 	
-	public Suit getSuit(){
-		return this.suit;
+	public SuitCard getSuit(){
+		return this.suitCard;
 	}
 	
 }

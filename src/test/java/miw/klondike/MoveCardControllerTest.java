@@ -1,6 +1,8 @@
 package miw.klondike;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Stack;
 
@@ -40,6 +42,7 @@ public class MoveCardControllerTest {
 		for (Card card : this.moveCardController.getGame().getWaste().getCards()) {
 			assertFalse(card.covered());
 		}
+		
 		
 		
 		this.moveCardController = new MoveCardController(new Game(new Deck(1), new Waste(23)));
